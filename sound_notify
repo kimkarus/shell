@@ -1,0 +1,78 @@
+#!/bin/bash
+#sudo chown root:root /home/jose/sync.sh
+#sudo chmod o-rwx /home/jose/sync.sh
+# количество файлов
+count_files=0
+count_null=0
+name_do="pe"
+path_server=//server-sql/Отгрузки/Перемещения
+#sudo mount -t cifs -o username=User,password=QQ1q8F7t $path_server $HOME/mnt/share/$name_do/
+
+for entry in $HOME/mnt/share/$name_do/*
+do
+  if([ "$entry" != "$HOME/mnt/share/pe/*" ]) ; then
+   count_files=$(($count_files+1))
+   echo $entry
+  fi	
+done
+echo $count_files
+if [ "$count_files" -gt "$count_null" ] ; then 
+ aplay $HOME/Документы/Play/$name_do/notify.wav
+ rm -rf $HOME/mnt/share/$name_do/*
+fi
+# количество файлов
+count_files=0
+count_null=0
+name_do="po"
+path_server=//server-sql/Отгрузки/Потребление
+#sudo mount -t cifs -o username=User,password=QQ1q8F7t $path_server $HOME/mnt/share/$name_do/
+
+for entry in $HOME/mnt/share/$name_do/*
+do
+  if([ "$entry" != "$HOME/mnt/share/po/*" ]) ; then
+   count_files=$(($count_files+1))
+   echo $entry
+  fi	
+done
+echo $count_files
+if [ "$count_files" -gt "$count_null" ] ; then 
+ aplay $HOME/Документы/Play/$name_do/notify.wav
+ rm -rf $HOME/mnt/share/$name_do/*
+fi
+count_files=0
+count_null=0
+name_do="re"
+path_server=//server-sql/Отгрузки/Реализация
+#sudo mount -t cifs -o username=User,password=QQ1q8F7t $path_server $HOME/mnt/share/$name_do/
+
+for entry in $HOME/mnt/share/$name_do/*
+do
+  if([ "$entry" != "$HOME/mnt/share/re/*" ]) ; then
+   count_files=$(($count_files+1))
+   echo $entry
+  fi	
+done
+echo $count_files
+if [ "$count_files" -gt "$count_null" ] ; then 
+ aplay $HOME/Документы/Play/$name_do/notify.wav
+ rm -rf $HOME/mnt/share/$name_do/*
+fi
+count_files=0
+count_null=0
+name_do="sb"
+path_server=//server-sql/Отгрузки/Сборка
+#sudo mount -t cifs -o username=User,password=QQ1q8F7t $path_server $HOME/mnt/share/$name_do/
+
+for entry in $HOME/mnt/share/$name_do/*
+do
+  if([ "$entry" != "$HOME/mnt/share/sb/*" ]) ; then
+   count_files=$(($count_files+1))
+   echo $entry
+  fi	
+done
+echo $count_files
+if [ "$count_files" -gt "$count_null" ] ; then 
+ aplay $HOME/Документы/Play/$name_do/notify.wav
+ rm -rf $HOME/mnt/share/$name_do/*
+fi
+exit
